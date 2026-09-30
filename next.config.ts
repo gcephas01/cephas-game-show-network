@@ -2,8 +2,8 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: "export",
-  basePath: "/YOUR-MCGSN-REPO-NAME",
-  assetPrefix: "/YOUR-MCGSN-REPO-NAME/",
+basePath: "/cephas-game-show-network",
+assetPrefix: "/cephas-game-show-network/",
   trailingSlash: true,
 };
 
