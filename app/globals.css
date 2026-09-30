@@ -1,26 +1,572 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #050508;
+  --foreground: #ffffff;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  background: #050508;
 }
 
 body {
+  margin: 0;
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.network {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  padding: 32px clamp(22px, 5vw, 80px) 28px;
+  background:
+    radial-gradient(circle at 50% -10%, rgba(72, 58, 145, 0.35), transparent 35%),
+    linear-gradient(180deg, #090912 0%, #050508 55%, #020204 100%);
+}
+
+.network::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.16;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 45px 45px;
+  mask-image: linear-gradient(to bottom, black, transparent 70%);
+}
+
+.studioGlow {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  filter: blur(110px);
+  opacity: 0.16;
+  pointer-events: none;
+}
+
+.studioGlowOne {
+  top: 100px;
+  left: -200px;
+  background: #0066ff;
+}
+
+.studioGlowTwo {
+  right: -200px;
+  bottom: 80px;
+  background: #ff006a;
+}
+
+.networkHeader {
+  position: relative;
+  z-index: 2;
+  max-width: 1450px;
+  margin: 0 auto;
+  min-height: 235px;
+  display: grid;
+  grid-template-columns: 150px 1fr 150px;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.networkBug {
+  width: 118px;
+  height: 118px;
+  border: 2px solid rgba(255, 255, 255, 0.65);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(-5deg);
+  box-shadow:
+    0 0 35px rgba(112, 88, 255, 0.25),
+    inset 0 0 25px rgba(255, 255, 255, 0.08);
+}
+
+.networkBug span {
+  font-size: 18px;
+  letter-spacing: 6px;
+  margin-left: 6px;
+}
+
+.networkBug strong {
+  font-size: 31px;
+  line-height: 0.9;
+  letter-spacing: -2px;
+}
+
+.headerCopy {
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0 0 4px;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 10px;
+  color: #d0caff;
+}
+
+.headerCopy h1 {
+  margin: 0;
+  font-size: clamp(46px, 7vw, 100px);
+  line-height: 0.77;
+  letter-spacing: -5px;
+  font-weight: 1000;
+  text-shadow: 0 7px 30px rgba(0, 0, 0, 0.55);
+}
+
+.headerCopy h1 span {
+  display: block;
+  color: transparent;
+  -webkit-text-stroke: 2px #ffffff;
+  letter-spacing: 8px;
+  font-size: 0.72em;
+  margin-top: 14px;
+}
+
+.networkTagline {
+  margin: 21px 0 0;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-size: 11px;
+  color: #aaaab8;
+}
+
+.onAir {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.onAirDot,
+.statusDot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ff334e;
+  box-shadow: 0 0 12px #ff334e;
+}
+
+.gameSection {
+  position: relative;
+  z-index: 2;
+  max-width: 1450px;
+  margin: 0 auto;
+  padding: 52px 0 65px;
+}
+
+.sectionHeading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 30px;
+  margin-bottom: 24px;
+}
+
+.sectionKicker {
+  margin: 0 0 6px;
+  color: #8d84ff;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 4px;
+}
+
+.sectionHeading h2 {
+  margin: 0;
+  font-size: clamp(28px, 3vw, 43px);
+  letter-spacing: -2px;
+}
+
+.sectionNote {
+  max-width: 390px;
+  margin: 0 0 4px;
+  color: #8f8f9b;
+  font-size: 13px;
+  text-align: right;
+}
+
+.gameGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.gameCard {
+  position: relative;
+  min-height: 445px;
+  padding: 19px;
+  border-radius: 22px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+  isolation: isolate;
+}
+
+.gameCard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  opacity: 0.94;
+}
+
+.gameCard::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.08), transparent 30%),
+    linear-gradient(0deg, rgba(0,0,0,0.7), transparent 55%);
+}
+
+.gameCard.press::before {
+  background:
+    radial-gradient(circle at 50% 34%, #ffcf1a 0%, transparent 27%),
+    linear-gradient(145deg, #c90021, #68000e 60%, #240006);
+}
+
+.gameCard.feud::before {
+  background:
+    radial-gradient(circle at 50% 34%, #3c92ff 0%, transparent 30%),
+    linear-gradient(145deg, #052b83, #061b52 60%, #02091d);
+}
+
+.gameCard.deal::before {
+  background:
+    radial-gradient(circle at 50% 34%, #ffbd37 0%, transparent 26%),
+    linear-gradient(145deg, #5d146f, #2d083d 58%, #100216);
+}
+
+.gameCard.catch::before {
+  background:
+    radial-gradient(circle at 50% 34%, #00d5ff 0%, transparent 27%),
+    linear-gradient(145deg, #006a73, #00323e 60%, #001216);
+}
+
+.gameCard:not(.unavailable) {
+  cursor: pointer;
+}
+
+.gameCard:not(.unavailable):hover {
+  transform: translateY(-8px) scale(1.012);
+  border-color: rgba(255, 255, 255, 0.48);
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.45);
+}
+
+.gameCard.unavailable {
+  opacity: 0.72;
+}
+
+.cardTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 9px;
+  border-radius: 7px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+}
+
+.status.live {
+  background: rgba(255, 20, 55, 0.17);
+}
+
+.statusDot {
+  width: 6px;
+  height: 6px;
+}
+
+.showNumber {
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  opacity: 0.6;
+}
+
+.gameLogo {
+  min-height: 190px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  filter: drop-shadow(0 9px 12px rgba(0, 0, 0, 0.38));
+}
+
+.pressLogo {
+  transform: rotate(-4deg);
+  line-height: 0.78;
+}
+
+.pressLogo span,
+.pressLogo strong {
+  display: block;
+  font-size: 46px;
+  font-weight: 1000;
+  letter-spacing: -3px;
+}
+
+.pressLogo small {
+  display: block;
+  margin: 10px 0 8px;
+  font-size: 17px;
+  letter-spacing: 10px;
+}
+
+.pressLogo strong {
+  color: #ffe52e;
+  font-size: 58px;
+}
+
+.feudLogo {
+  padding: 21px 27px;
+  border-radius: 50%;
+  border: 5px solid #f5c74e;
+  background: #0750a7;
+  box-shadow:
+    0 0 0 5px #0d2355,
+    0 0 0 8px #f5c74e;
+  transform: rotate(2deg);
+}
+
+.feudLogo span,
+.feudLogo strong {
+  display: block;
+  font-weight: 1000;
+  font-style: italic;
+}
+
+.feudLogo span {
+  font-size: 22px;
+}
+
+.feudLogo strong {
+  font-size: 38px;
+  color: #ffd55c;
+}
+
+.dealLogo small {
+  display: block;
+  font-size: 13px;
+  letter-spacing: 6px;
+  margin-bottom: 5px;
+}
+
+.dealLogo strong {
+  display: block;
+  font-size: 43px;
+  line-height: 0.9;
+}
+
+.doors {
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+  margin-top: 18px;
+}
+
+.doors span {
+  width: 38px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border: 2px solid #ffd35a;
+  background: rgba(0, 0, 0, 0.38);
+  font-weight: 900;
+  font-size: 18px;
+}
+
+.catchLogo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transform: rotate(-3deg);
+}
+
+.catchLogo span {
+  font-size: 38px;
+  font-weight: 1000;
+  letter-spacing: -3px;
+}
+
+.catchLogo strong {
+  font-size: 83px;
+  line-height: 1;
+  color: #f6ff42;
+}
+
+.gameAccent {
+  margin: 0 0 8px;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.gameDescription {
+  min-height: 42px;
+  margin: 0 0 18px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.playButton {
+  min-height: 48px;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.94);
+  color: #09090c;
+  font-size: 11px;
+  font-weight: 1000;
+  letter-spacing: 1.6px;
+}
+
+.unavailable .playButton {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+footer {
+  position: relative;
+  z-index: 2;
+  max-width: 1450px;
+  margin: 0 auto;
+  text-align: center;
+  color: #6d6d79;
+}
+
+.footerLine {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.16),
+    transparent
+  );
+  margin-bottom: 24px;
+}
+
+footer p {
+  margin: 0 0 7px;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+footer p span {
+  margin: 0 8px;
+  color: #6d62e8;
+}
+
+footer small {
+  font-size: 8px;
+  letter-spacing: 3px;
+  opacity: 0.6;
+}
+
+@media (max-width: 1100px) {
+  .gameGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .network {
+    padding: 20px 16px 25px;
+  }
+
+  .networkHeader {
+    min-height: 260px;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 16px;
+    padding: 20px 0 30px;
+  }
+
+  .networkBug {
+    width: 72px;
+    height: 72px;
+  }
+
+  .networkBug span {
+    font-size: 10px;
+  }
+
+  .networkBug strong {
+    font-size: 20px;
+  }
+
+  .onAir {
+    justify-self: center;
+  }
+
+  .headerCopy h1 {
+    letter-spacing: -3px;
+  }
+
+  .headerCopy h1 span {
+    letter-spacing: 4px;
+  }
+
+  .sectionHeading {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .sectionNote {
+    text-align: left;
+  }
+
+  .gameGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .gameCard {
+    min-height: 400px;
+  }
 }

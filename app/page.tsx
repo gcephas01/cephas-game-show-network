@@ -1,69 +1,177 @@
-import Image from "next/image";
+const games = [
+  {
+    title: "PRESS YOUR LUCK",
+    shortTitle: "PYL",
+    tagline: "Big points. Big risks. Watch out for the Whammy.",
+    status: "LIVE",
+    href: "https://gcephas01.github.io/cephas-whammy-board/",
+    theme: "press",
+    accent: "NO WHAMMIES!",
+  },
+{
+  title: "FAMILY FEUD",
+  shortTitle: "FF",
+  tagline: "We asked the class. The top answers are on the board.",
+  status: "LIVE",
+  href: "https://gcephas01.github.io/cephas-family-feud/",
+  theme: "feud",
+  accent: "SURVEY SAYS...",
+},
+  {
+    title: "LET'S MAKE A DEAL",
+    shortTitle: "LMAD",
+    tagline: "Take the deal, choose a door, or risk it all.",
+    status: "COMING SOON",
+    href: "",
+    theme: "deal",
+    accent: "WHAT'S BEHIND THE DOOR?",
+  },
+  {
+    title: "CATCH 21",
+    shortTitle: "21",
+    tagline: "Answer. Draw. Build your hands. Don't bust.",
+    status: "COMING SOON",
+    href: "",
+    theme: "catch",
+    accent: "HIT 21.",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
+    <main className="network">
+      <div className="studioGlow studioGlowOne" />
+      <div className="studioGlow studioGlowTwo" />
+
+      <header className="networkHeader">
+        <div className="networkBug">
+          <span>MC</span>
+          <strong>GSN</strong>
+        </div>
+
+        <div className="headerCopy">
+          <p className="eyebrow">MR. CEPHAS&apos;</p>
+          <h1>
+            GAME SHOW
+            <span>NETWORK</span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="networkTagline">Review just got interesting.</p>
+        </div>
+
+        <div className="onAir">
+          <span className="onAirDot" />
+          ON AIR
+        </div>
+      </header>
+
+      <section className="gameSection">
+        <div className="sectionHeading">
+          <div>
+            <p className="sectionKicker">CHOOSE YOUR GAME</p>
+            <h2>Tonight&apos;s Lineup</h2>
+          </div>
+
+          <p className="sectionNote">
+            Pick a show. Know your stuff. Try not to get Zonked.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <div className="gameGrid">
+          {games.map((game) => {
+            const isLive = game.status === "LIVE";
+
+            const cardContent = (
+              <>
+                <div className="cardTop">
+                  <span className={`status ${isLive ? "live" : ""}`}>
+                    {isLive && <span className="statusDot" />}
+                    {game.status}
+                  </span>
+
+                  <span className="showNumber">{game.shortTitle}</span>
+                </div>
+
+                <div className="gameLogo">
+                  {game.theme === "press" && (
+                    <div className="pressLogo">
+                      <span>PRESS</span>
+                      <small>YOUR</small>
+                      <strong>LUCK</strong>
+                    </div>
+                  )}
+
+                  {game.theme === "feud" && (
+                    <div className="feudLogo">
+                      <span>FAMILY</span>
+                      <strong>FEUD</strong>
+                    </div>
+                  )}
+
+                  {game.theme === "deal" && (
+                    <div className="dealLogo">
+                      <small>LET&apos;S MAKE</small>
+                      <strong>A DEAL</strong>
+                      <div className="doors">
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                      </div>
+                    </div>
+                  )}
+
+                  {game.theme === "catch" && (
+                    <div className="catchLogo">
+                      <span>CATCH</span>
+                      <strong>21</strong>
+                    </div>
+                  )}
+                </div>
+
+                <div className="cardBottom">
+                  <p className="gameAccent">{game.accent}</p>
+                  <p className="gameDescription">{game.tagline}</p>
+
+                  <div className="playButton">
+                    {isLive ? "PLAY NOW" : "COMING SOON"}
+                    <span>{isLive ? "▶" : "◆"}</span>
+                  </div>
+                </div>
+              </>
+            );
+
+            if (isLive) {
+              return (
+                <a
+                  key={game.title}
+                  href={game.href}
+                  className={`gameCard ${game.theme}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {cardContent}
+                </a>
+              );
+            }
+
+            return (
+              <div
+                key={game.title}
+                className={`gameCard ${game.theme} unavailable`}
+              >
+                {cardContent}
+              </div>
+            );
+          })}
         </div>
-      </main>
-    </div>
+      </section>
+
+      <footer>
+        <div className="footerLine" />
+        <p>
+          MCGSN <span>•</span> MR. CEPHAS&apos; GAME SHOW NETWORK
+        </p>
+        <small>KNOWLEDGE IS THE REAL GRAND PRIZE.</small>
+      </footer>
+    </main>
   );
 }
