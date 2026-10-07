@@ -35,6 +35,16 @@ const games = [
     theme: "catch",
     accent: "HIT 21.",
   },
+{
+  title: "BOMB SQUAD",
+  shortTitle: "BS",
+  tagline: "Answer fast. Cut carefully. Save everybody.",
+  status: "LIVE",
+  href: "https://gcephas01.github.io/cephas-bomb-squad/",
+  theme: "bomb",
+  accent: "CUT THE RIGHT WIRE.",
+},
+
 ];
 
 export default function Home() {
@@ -120,12 +130,28 @@ export default function Home() {
                   )}
 
                   {game.theme === "catch" && (
-                    <div className="catchLogo">
-                      <span>CATCH</span>
-                      <strong>21</strong>
-                    </div>
-                  )}
-                </div>
+  <div className="catchLogo">
+    <span>CATCH</span>
+    <strong>21</strong>
+  </div>
+)}
+
+{game.theme === "bomb" && (
+  <div className="bombLogo">
+    <div className="bombTimer">00:10</div>
+
+    <div className="bombWires">
+      <span className="wire red" />
+      <span className="wire yellow" />
+      <span className="wire blue cut" />
+      <span className="wire green" />
+    </div>
+
+    <span className="bombWord">BOMB</span>
+    <strong>SQUAD</strong>
+  </div>
+)}
+</div>
 
                 <div className="cardBottom">
                   <p className="gameAccent">{game.accent}</p>

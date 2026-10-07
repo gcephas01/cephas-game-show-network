@@ -274,6 +274,13 @@ a {
     linear-gradient(145deg, #006a73, #00323e 60%, #001216);
 }
 
+.gameCard.bomb::before {
+  background:
+    radial-gradient(circle at 50% 34%, rgba(255, 48, 48, 0.65) 0%, transparent 27%),
+    radial-gradient(circle at 20% 80%, rgba(255, 190, 0, 0.12), transparent 35%),
+    linear-gradient(145deg, #24272c, #101216 58%, #050607);
+}
+
 .gameCard:not(.unavailable) {
   cursor: pointer;
 }
@@ -433,6 +440,172 @@ a {
   font-size: 83px;
   line-height: 1;
   color: #f6ff42;
+}
+
+/* =========================
+   BOMB SQUAD
+========================= */
+
+.bombLogo {
+  position: relative;
+  width: 210px;
+  min-height: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(-2deg);
+}
+
+.bombTimer {
+  position: relative;
+  z-index: 3;
+  padding: 8px 15px 6px;
+  margin-bottom: 13px;
+
+  border: 3px solid #4b4f55;
+  border-radius: 7px;
+
+  background:
+    linear-gradient(180deg, #111417, #020303);
+
+  color: #ff3434;
+
+  font-family: "Courier New", monospace;
+  font-size: 29px;
+  font-weight: 900;
+  letter-spacing: 3px;
+
+  text-shadow:
+    0 0 6px #ff0000,
+    0 0 15px rgba(255, 0, 0, 0.7);
+
+  box-shadow:
+    0 5px 12px rgba(0, 0, 0, 0.6),
+    inset 0 0 8px rgba(255, 255, 255, 0.08);
+}
+
+.bombWires {
+  position: absolute;
+  top: 67px;
+  left: 13px;
+  right: 13px;
+  height: 45px;
+  z-index: 1;
+}
+
+.bombWires .wire {
+  position: absolute;
+  height: 5px;
+  width: 86px;
+  border-radius: 999px;
+
+  box-shadow:
+    0 2px 3px rgba(0, 0, 0, 0.8),
+    inset 0 1px 1px rgba(255, 255, 255, 0.4);
+}
+
+.bombWires .red {
+  left: 2px;
+  top: 4px;
+  background: #ef3038;
+  transform: rotate(12deg);
+}
+
+.bombWires .yellow {
+  right: 0;
+  top: 9px;
+  background: #ffd229;
+  transform: rotate(-14deg);
+}
+
+.bombWires .blue {
+  left: 5px;
+  top: 29px;
+  background: #248cff;
+  transform: rotate(-8deg);
+}
+
+.bombWires .green {
+  right: 3px;
+  top: 31px;
+  background: #24c96b;
+  transform: rotate(10deg);
+}
+
+/* Little break in the blue wire */
+.bombWires .wire.cut {
+  width: 38px;
+}
+
+.bombWires .wire.cut::after {
+  content: "";
+  position: absolute;
+  left: 47px;
+  top: 5px;
+
+  width: 38px;
+  height: 5px;
+
+  border-radius: 999px;
+  background: #248cff;
+
+  transform: rotate(10deg);
+
+  box-shadow:
+    0 2px 3px rgba(0, 0, 0, 0.8);
+}
+
+/* tiny electrical spark */
+.bombWires .wire.cut::before {
+  content: "✦";
+  position: absolute;
+  left: 39px;
+  top: -12px;
+
+  color: #fff2a8;
+  font-size: 18px;
+
+  text-shadow:
+    0 0 5px #fff,
+    0 0 10px #ffd400;
+}
+
+.bombWord {
+  position: relative;
+  z-index: 3;
+
+  display: block;
+
+  margin-top: 23px;
+
+  font-size: 33px;
+  line-height: 0.82;
+  font-weight: 1000;
+  letter-spacing: -2px;
+
+  color: #ffffff;
+
+  text-shadow:
+    0 4px 10px rgba(0, 0, 0, 0.8);
+}
+
+.bombLogo strong {
+  position: relative;
+  z-index: 3;
+
+  display: block;
+
+  font-size: 49px;
+  line-height: 0.9;
+  font-weight: 1000;
+  letter-spacing: -3px;
+
+  color: #ffd329;
+
+  text-shadow:
+    0 4px 10px rgba(0, 0, 0, 0.8),
+    0 0 18px rgba(255, 198, 0, 0.2);
 }
 
 .gameAccent {
