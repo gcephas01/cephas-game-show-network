@@ -45,6 +45,15 @@ const games = [
   accent: "CUT THE RIGHT WIRE.",
 },
 
+  {
+    title: "THE FLOOR IS LAVA",
+    shortTitle: "LAVA",
+    tagline: "Run. Jump. Survive. Arcade mode is here!",
+    status: "EARLY ACCESS",
+    href: "https://gcephas01.github.io/cephas-floor-is-lava/",
+    theme: "lava",
+    accent: "DON’T TOUCH THE FLOOR!",
+  },
 ];
 
 export default function Home() {
@@ -89,12 +98,13 @@ export default function Home() {
         <div className="gameGrid">
           {games.map((game) => {
             const isLive = game.status === "LIVE";
+            const isPlayable = isLive || game.status === "EARLY ACCESS";
 
             const cardContent = (
               <>
                 <div className="cardTop">
-                  <span className={`status ${isLive ? "live" : ""}`}>
-                    {isLive && <span className="statusDot" />}
+                  <span className={`status ${isPlayable ? "live" : ""}`}>
+                    {isPlayable && <span className="statusDot" />}
                     {game.status}
                   </span>
 
@@ -151,6 +161,14 @@ export default function Home() {
     <strong>SQUAD</strong>
   </div>
 )}
+  {game.theme === "lava" && (
+                    <div style={{display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", gap:3, width:"100%", height:"100%", minHeight:130, borderRadius:12, background:"radial-gradient(ellipse at 50% 100%, #a9350a 0%, #461b20 42%, #191627 85%)", overflow:"hidden", position:"relative"}}>
+                      <span aria-hidden="true" style={{fontSize:38, lineHeight:1}}>🌋</span>
+                      <span style={{color:"#fff4d8", fontSize:"clamp(18px, 2.3vw, 30px)", fontWeight:1000, lineHeight:1, textAlign:"center", letterSpacing:1, textShadow:"0 3px 0 #9d260c, 0 5px 12px #000"}}>THE FLOOR</span>
+                      <span style={{color:"#ffb341", fontSize:"clamp(25px, 3.4vw, 44px)", fontWeight:1000, lineHeight:1, textAlign:"center", textShadow:"0 4px 0 #a92707, 0 7px 15px #000"}}>IS LAVA!</span>
+                      <span style={{fontSize:11, color:"#ffe4a0", fontWeight:800, letterSpacing:3}}>ARCADE MODE</span>
+                    </div>
+                  )}
 </div>
 
                 <div className="cardBottom">
@@ -158,14 +176,14 @@ export default function Home() {
                   <p className="gameDescription">{game.tagline}</p>
 
                   <div className="playButton">
-                    {isLive ? "PLAY NOW" : "COMING SOON"}
-                    <span>{isLive ? "▶" : "◆"}</span>
+                    {isPlayable ? "PLAY NOW" : "COMING SOON"}
+                    <span>{isPlayable ? "▶" : "◆"}</span>
                   </div>
                 </div>
               </>
             );
 
-            if (isLive) {
+            if (isPlayable) {
               return (
                 <a
                   key={game.title}
