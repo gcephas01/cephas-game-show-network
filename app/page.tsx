@@ -64,6 +64,16 @@ const games = [
     accent: "RULE THE CROWNLANDS.",
   },
 
+  {
+    title: "ACT'N OUT!",
+    shortTitle: "ACT",
+    tagline: "Four improv games. Two teams. The points are questionable.",
+    status: "LIVE",
+    href: "https://gcephas01.github.io/cephas-actn-out/",
+    theme: "actnout",
+    accent: "THE STAGE IS YOURS.",
+  },
+
 ];
 
 export default function Home() {
@@ -171,6 +181,32 @@ export default function Home() {
     <strong>SQUAD</strong>
   </div>
 )}
+                  {game.theme === "actnout" && (
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        gap: 6,
+                        width: "100%",
+                        minHeight: 130,
+                        borderRadius: 12,
+                        background: "radial-gradient(ellipse at 50% 0%, #754b8f 0%, #35214e 52%, #181526 100%)",
+                        border: "1px solid #b68bd0",
+                        textAlign: "center",
+                        boxShadow: "inset 0 0 25px #c59be322",
+                      }}
+                    >
+                      <span aria-hidden="true" style={{ fontSize: 31 }}>🎭</span>
+                      <strong style={{ color: "#f7d68e", fontSize: 30, letterSpacing: 1, lineHeight: 1.1 }}>
+                        ACT&apos;N OUT!
+                      </strong>
+                      <small style={{ color: "#f1d7ff", letterSpacing: 2, fontWeight: 700 }}>
+                        IMPROV • MUSIC • MAYHEM
+                      </small>
+                    </div>
+                  )}
                   {game.theme === "kingdoms" && (
                     <div style={{display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", gap:5, width:"100%", minHeight:130, borderRadius:12, background:"radial-gradient(ellipse at top, #68512c, #243d36 55%, #121b25)", border:"1px solid #8d7246", textAlign:"center"}}>
                       <span aria-hidden="true" style={{fontSize:32}}>⚔️</span>
